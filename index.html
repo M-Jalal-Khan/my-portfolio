@@ -21,226 +21,209 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Favicon - Updated with an inline SVG for a data science/AI symbol -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300CED1' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm4 0h2v4h-2zm-8 0h2v8h-2z'/%3E%3C/svg%3E">
-
 </head>
 <body class="bg-dark-bg text-white">
 
     <!-- Particle Background - Will be controlled by scripts.js using tsparticles -->
-    <div id="particle-bg" class="absolute inset-0 z-0"></div>
+    <div id="particle-bg"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center bg-dark-card-bg shadow-lg backdrop-blur-sm bg-opacity-80 transition-all duration-300 ease-in-out">
-        <a href="#hero" id="site-logo" class="text-2xl md:text-3xl font-orbitron font-bold text-accent-aqua-blue hover:text-accent-aqua-green transition-colors duration-300 cursor-pointer" aria-label="Go to Home section">
-            MJK
-        </a>
-        <button id="navbar-toggle" class="md:hidden text-white text-2xl focus:outline-none focus:ring-2 focus:ring-accent-aqua-blue rounded-md p-2" aria-label="Toggle navigation menu">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div id="navbar-menu" class="hidden md:flex flex-col md:flex-row items-center gap-6 md:gap-8 text-lg md:text-base">
-            <a href="#about" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="about" title="Go to About section">About</a>
-            <a href="#skills" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="skills" title="Go to Skills section">Skills</a>
-            <a href="#credentials" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="credentials" title="Go to Credentials section">Credentials</a>
-            <a href="#experience" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="experience" title="Go to Experience section">Experience</a>
-            <a href="#projects" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="projects" title="Go to Projects section">Projects</a>
-            <a href="#testimonials" class="nav-item text-white hover:text-accent-aqua-blue transition-colors duration-300 relative group" data-section="testimonials" title="Go to Testimonials section">Testimonials</a>
-            <a href="#contact" class="nav-item primary-button text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300" data-section="contact" title="Get in touch">Contact Me</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed top-0 left-0 w-full z-50 bg-dark-card-bg bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-xl">
+        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div id="site-logo" class="text-xl font-bold text-accent-aqua-green cursor-pointer mb-4 md:mb-0 hover:text-accent-aqua-blue transition-colors duration-300" title="Back to Home">
+                Muhammad Jalal Khan
+            </div>
+            <ul class="flex flex-wrap justify-center space-x-2 sm:space-x-4">
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="hero" title="Go to Home section">Home</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="about" title="Go to About section">About</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="skills" title="Go to Skills section">Skills</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="credentials" title="Go to Credentials section">Credentials</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="experience" title="Go to Experience section">Experience</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="projects" title="Go to Projects section">Projects</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="testimonials" title="Go to Testimonials section">Testimonials</button></li>
+                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="contact" title="Go to Contact section">Contact</button></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center text-center p-6 pt-24 md:pt-32 overflow-hidden">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative z-10">
-            <!-- Left side: Text Content -->
-            <div class="hero-text-content flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
-                <h2 class="text-xl md:text-2xl font-inter text-accent-aqua-green mb-2 tracking-wide">Hello, I'm</h2>
-                <h1 class="text-4xl md:text-6xl font-orbitron font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
-                    Muhammad Jalal Khan
-                </h1>
-                <p id="typewriter-text" class="text-2xl md:text-3xl font-inter font-medium text-accent-aqua-blue neon-text-sm mb-6 min-h-[3rem]">
-                    Strategic Data & Business Intelligence Consultant
-                </p>
-                <p class="text-base md:text-lg text-gray-300 mb-8 max-w-prose">
-                    I transform complex data into clear, actionable insights that drive strategic decisions and measurable business growth. Let's unlock the power of your data.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#projects" class="primary-button text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 scroll-button" data-section="projects" title="View my Projects">
-                        <span class="button-text">View My Work</span>
-                        <span class="button-icon"><i class="fas fa-arrow-right ml-2"></i></span>
-                    </a>
-                    <a href="#contact" class="secondary-button text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 scroll-button" data-section="contact" title="Get in touch">
-                        <span class="button-text">Get In Touch</span>
-                        <span class="button-icon"><i class="fas fa-envelope ml-2"></i></span>
-                    </a>
+    <!-- Main Content Sections -->
+    <main class="pt-20 md:pt-24">
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-content-hero flex flex-col justify-center items-center text-center px-6 py-12 md:py-20 relative overflow-hidden">
+            <div class="hero-content-wrapper relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 p-6 md:p-10 rounded-3xl bg-dark-card-bg bg-opacity-70 backdrop-blur-sm shadow-2xl border-2 border-accent-aqua-blue transform max-w-6xl w-full">
+
+                <!-- Text Content on Left -->
+                <div class="hero-text text-center md:text-left md:w-1/2 lg:w-2/5 flex flex-col items-center md:items-start md:max-w-md">
+                    <h1 class="mb-2">
+                        <span class="text-white hero-intro-line">Hi, I'm</span><br>
+                        <span class="text-white neon-title-hero">Muhammad Jalal Khan</span><br>
+                        <span id="animated-job-title" class="neon-text-sm relative inline-block">
+                            <span class="title-placeholder-background absolute inset-0 rounded-md"></span>
+                            Strategic Data & Business Intelligence Consultant
+                        </span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-400 mt-2">
+                        I translate dense, disjointed data into focused intelligence that guides high-stakes decisions and drives operational excellence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-6 hero-buttons-group">
+                        <!-- Download CV Button -->
+                        <a href="https://www.dropbox.com/scl/fi/a6uy4fqimq6ivwyrbqk5d/MUHAMMAD-JALAL-KHAN.pdf?rlkey=b7ohjghozbz9zvgvdulm2x4bh&raw=1" download class="primary-button text-sm sm:text-base px-6 py-3 hero-button" title="Download my CV">
+                            <span class="button-text">Download My CV</span>
+                            <span class="button-icon"><i class="fas fa-download"></i></span>
+                        </a>
+                        <!-- Connect Now Button -->
+                        <a href="https://wa.me/message/NB46I4RLUZBAC1" target="_blank" rel="noopener noreferrer" class="primary-button text-sm sm:text-base px-6 py-3 hero-button" title="Connect with me on WhatsApp">
+                            <span class="button-text">Connect Now</span>
+                            <span class="button-icon"><i class="fab fa-whatsapp"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image on Right with New Clean Rounded Rectangle Frame -->
+                <div class="hero-image-wrapper md:w-1/2 lg:w-3/5 flex justify-center items-center relative">
+                    <div id="profile-image-frame" class="profile-frame-outer rounded-2xl relative w-80 h-64 sm:w-96 sm:h-72 lg:w-112 lg:h-84 xl:w-128 xl:h-96 overflow-hidden flex items-center justify-center">
+                        <!-- Profile Image - now rectangular and fills the outer frame -->
+                        <img src="https://res.cloudinary.com/dshznv39k/image/upload/v1751802427/WhatsApp_Image_2025-03-31_at_00.03.09_c5aef038_xwhxln.jpg" alt="Muhammad Jalal Khan" class="profile-image-actual w-full h-full object-cover rounded-2xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1f2937/d1d5db?text=Image+Not+Found';"/>
+                    </div>
                 </div>
             </div>
+            <!-- Animated tech pattern behind hero content -->
+            <div class="hero-pattern absolute inset-0 z-0 opacity-10 pointer-events-none"></div>
+        </section>
 
-            <!-- Right side: Profile Image with Glow Effect -->
-            <div class="hero-image-wrapper relative flex-shrink-0 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center mt-8 md:mt-0">
-                <div id="profile-image-frame" class="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105">
-                    <img src="http://googleusercontent.com/file_content/3" alt="Muhammad Jalal Khan" class="w-full h-full object-cover object-center filter grayscale hover:grayscale-0 transition-filter duration-500"/>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section bg-dark-card-bg rounded-t-3xl shadow-inner-lg shadow-gray-800 min-h-section-viewport">
+            <div class="container mx-auto flex flex-col items-center gap-8 max-w-6xl">
+                <!-- Floating Data Icons for visual flair -->
+                <i class="fas fa-database data-icon-float" style="top: 10%; left: 5%;"></i>
+                <i class="fas fa-chart-line data-icon-float" style="top: 30%; right: 10%; animation-delay: 3s;"></i>
+                <i class="fas fa-brain data-icon-float" style="bottom: 20%; left: 15%; animation-delay: 6s;"></i>
+                <i class="fas fa-project-diagram data-icon-float" style="top: 50%; left: 40%; animation-delay: 9s;"></i>
+                <i class="fas fa-cloud data-icon-float" style="bottom: 5%; right: 20%; animation-delay: 12s;"></i>
 
-    <main class="relative z-10">
-        <!-- About Section -->
-        <section id="about" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    About Me
-                </h2>
-                <div class="bg-dark-card-bg p-8 rounded-2xl shadow-xl border border-border-dark animate-fade-in-up">
-                    <p class="animated-paragraph text-lg text-gray-300 mb-6 leading-relaxed">
-                        I am Muhammad Jalal Khan, a <strong class="text-accent-aqua-green">Strategic Data & Business Intelligence Consultant</strong> with a passion for transforming raw data into compelling narratives and actionable insights. My journey in data began with a fascination for uncovering hidden patterns and has evolved into a mission to drive measurable business growth through intelligent data solutions.
+                <!-- About text now takes full width -->
+                <div class="md:w-full text-left max-w-3xl mx-auto">
+                    <h2 class="section-title text-accent-aqua-green text-3xl">About Me</h2>
+                    <p class="section-description text-gray-300 leading-relaxed text-base animated-paragraph">
+                        I’m not here to just analyze data — I’m here to make it count. With over three years of experience in data analytics, business intelligence, and machine learning, I help organizations move from disconnected numbers to clear, confident decisions. My background spans freelance consulting and in-house BI transformation, supporting leadership teams with reporting systems, predictive models, and dynamic dashboards that lead to measurable improvements—not just more information.
                     </p>
-                    <p class="animated-paragraph text-lg text-gray-300 mb-6 leading-relaxed delay-100">
-                        With a robust background in <strong class="text-accent-aqua-green">Power BI, Python (Pandas, NumPy, Scikit-learn), SQL, and advanced analytics tools</strong>, I specialize in building end-to-end data pipelines, developing predictive models, and crafting interactive dashboards that empower stakeholders to make informed decisions. I thrive on solving complex business problems, whether it's optimizing supply chains, predicting customer churn, or enhancing operational efficiency.
+                    <p class="section-description text-gray-400 mt-2 leading-relaxed text-base animated-paragraph">
+                        My work is rooted in practical outcomes. I’ve built automated reporting pipelines that save teams dozens of hours each month. I’ve designed dashboards that surface what matters most—without overwhelming the people who rely on them. And I’ve delivered machine learning solutions that help businesses stay ahead of challenges, not react to them after the fact.
                     </p>
-                    <p class="animated-paragraph text-lg text-gray-300 leading-relaxed delay-200">
-                        My approach is always client-centric: I focus on understanding your unique challenges and translating them into data-driven strategies that deliver tangible results. I believe that data, when properly harnessed, is the most powerful asset a business can possess. Let's connect and explore how we can leverage your data to achieve your strategic objectives.
+                    <p class="section-description text-gray-300 mt-2 leading-relaxed text-base animated-paragraph">
+                        What sets me apart is a simple but important principle: every data solution should serve a purpose. I build with intention—thinking not just about how the system works, but who it’s for, how it will be used, and what decisions it needs to support. My strength lies in blending technical expertise with a strategic mindset, so data becomes not just accessible, but actionable.
+                    </p>
+                    <p class="section-description text-gray-400 mt-2 leading-relaxed text-base animated-paragraph">
+                        Data should simplify decisions, not complicate them. That’s the standard I build for—and it’s the value I deliver.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-16 md:py-24 px-6 bg-dark-bg">
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section bg-dark-bg min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-blue text-3xl">Core Skills & Tools</h2>
             <div class="container mx-auto max-w-6xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    My Skills
-                </h2>
-                <div class="flex justify-center flex-wrap gap-3 mb-8">
-                    <button class="skill-tab-button active" data-category="all">All Skills</button>
+                <div class="skills-tabs flex justify-center mb-8 flex-wrap gap-3">
+                    <button class="skill-tab-button active" data-category="all">All</button>
                     <button class="skill-tab-button" data-category="data-tools">Data Tools</button>
-                    <button class="skill-tab-button" data-category="ml-analytics">ML & Analytics</button>
                     <button class="skill-tab-button" data-category="programming">Programming</button>
+                    <button class="skill-tab-button" data-category="ml-analytics">ML & Analytics</button>
                     <button class="skill-tab-button" data-category="data-infra">Data Infra</button>
                 </div>
-                <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5" id="skills-grid">
                     <!-- Skills will be dynamically loaded here by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <!-- Credentials Section -->
-        <section id="credentials" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    Certifications & Achievements
-                </h2>
-                <div id="credentials-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Credentials will be dynamically loaded here by JavaScript -->
-                </div>
+        <!-- CREDENTIALS SECTION -->
+        <section id="credentials" class="section bg-dark-card-bg shadow-inner-lg shadow-gray-800 min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-green text-3xl">My Certifications & Achievements</h2>
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl" id="credentials-grid">
+                <!-- Credentials will be dynamically loaded here by JavaScript -->
             </div>
         </section>
 
-        <!-- Certificate Modal -->
-        <div id="certificate-modal" class="modal-overlay">
-            <div class="modal-content">
-                <button class="modal-close-button" aria-label="Close modal">&times;</button>
-                <img id="modal-image" src="" alt="Certificate" class="modal-image"/>
-                <div class="modal-text-content">
-                    <h3 id="modal-title" class="text-xl font-bold text-accent-aqua-green"></h3>
-                    <p class="text-gray-300"><span class="font-semibold">Issuer:</span> <span id="modal-issuer"></span></p>
-                    <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="primary-button text-sm mt-4">
-                        View Credential <i class="fas fa-external-link-alt ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    Experience
-                </h2>
-                <div class="timeline">
-                    <!-- Experience items will be dynamically loaded here by JavaScript -->
-                </div>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="section bg-dark-bg min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-blue text-3xl">My Professional Journey</h2>
+            <div class="container timeline">
+                <!-- Experience will be dynamically loaded here by JavaScript -->
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    My Projects
-                </h2>
-                <div id="projects-grid" class="projects-grid">
-                    <!-- Projects will be dynamically loaded here by JavaScript -->
-                </div>
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section bg-dark-bg min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-blue text-3xl">Projects & Case Studies</h2>
+            <div class="container mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl" id="projects-grid">
+                <!-- Projects will be dynamically loaded here by JavaScript -->
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="section-title text-3xl md:text-4xl font-orbitron font-bold text-center mb-12 relative">
-                    Testimonials
-                </h2>
-                <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonials will be dynamically loaded here by JavaScript -->
-                </div>
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="section bg-dark-card-bg shadow-inner-lg shadow-gray-800 min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-green text-3xl">Testimonials</h2>
+            <div class="container mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl" id="testimonials-grid">
+                <!-- Testimonials will be dynamically loaded here by JavaScript -->
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 md:py-24 px-6 bg-dark-bg">
-            <div class="container mx-auto max-w-4xl flex flex-col md:flex-row items-center justify-center gap-8">
-                <div class="contact-info-card w-full md:w-1/2 p-8 bg-dark-card-bg rounded-2xl shadow-xl border border-border-dark animate-fade-in-up">
-                    <h3 class="text-2xl font-orbitron font-bold text-accent-aqua-blue mb-6 text-center md:text-left">
-                        Let's Connect
-                    </h3>
-                    <p class="text-gray-300 mb-6 text-center md:text-left">
-                        I'm always open to new opportunities, collaborations, and discussions about data and business intelligence. Feel free to reach out through any of the channels below.
-                    </p>
-                    <div id="connect-links-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Contact links will be dynamically loaded here by JavaScript -->
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section bg-dark-card-bg rounded-b-3xl shadow-inner-lg shadow-gray-800 min-h-section-viewport">
+            <h2 class="section-title text-accent-aqua-blue text-3xl">Let's Connect & Collaborate</h2>
+            <!-- Removed the problematic paragraph as requested -->
+            <div class="container mx-auto max-w-4xl flex flex-col md:flex-row gap-8">
+                <!-- Connect Me Block -->
+                <div class="connect-me-block bg-dark-bg p-6 rounded-2xl shadow-xl border-2 border-accent-aqua-green flex-1">
+                    <h3 class="text-xl font-bold text-accent-aqua-green mb-5 text-center">Find Me Online</h3>
+                    <div class="grid grid-cols-2 gap-3 text-base" id="connect-links-grid">
+                        <!-- Connect links will be dynamically loaded here by JavaScript -->
                     </div>
                 </div>
 
-                <div class="contact-form-card w-full md:w-1/2 p-8 bg-dark-card-bg rounded-2xl shadow-xl border border-border-dark animate-fade-in-up delay-100">
-                    <h3 class="text-2xl font-orbitron font-bold text-accent-aqua-green mb-6 text-center">
-                        Send Me a Message
-                    </h3>
-                    <form class="contact-form space-y-4" action="https://formspree.io/f/xdkdnkao" method="POST">
-                        <div>
-                            <label for="name" class="sr-only">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required
-                                class="form-input w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-accent-aqua-blue focus:border-transparent transition-all duration-300"
-                                title="Enter your name">
-                        </div>
-                        <div>
-                            <label for="email" class="sr-only">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email" required
-                                class="form-input w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-accent-aqua-blue focus:border-transparent transition-all duration-300"
-                                title="Enter your email address">
-                        </div>
-                        <div>
-                            <label for="message" class="sr-only">Your Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required
-                                class="form-input w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-accent-aqua-blue focus:border-transparent transition-all duration-300"
-                                title="Enter your message"></textarea>
-                        </div>
-                        <button type="submit" class="primary-button w-full text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-                            <span class="button-text">Send Message</span>
-                            <span class="button-icon"><i class="fas fa-paper-plane ml-2"></i></span>
-                        </button>
-                        <p id="form-status" class="mt-4 text-center text-sm font-medium"></p>
-                    </form>
-                </div>
+                <!-- Contact Form Block -->
+                <form class="contact-form bg-dark-bg p-6 rounded-2xl shadow-xl border-2 border-accent-aqua-green relative overflow-hidden flex-1" title="Send me a message">
+                    <h3 class="text-xl font-bold text-accent-aqua-blue mb-5 text-center">Send Me a Message</h3>
+                    <div class="form-group mb-4">
+                        <input type="text" id="contactName" name="contactName" placeholder="Your Name" class="form-input text-sm" required title="Enter your name" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <input type="email" id="contactEmail" name="contactEmail" placeholder="Your Email" class="form-input text-sm" required title="Enter your email address" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <textarea id="contactMessage" name="contactMessage" placeholder="Your Message" rows="4" class="form-input resize-y text-sm" title="Enter your message"></textarea>
+                    </div>
+                    <button type="submit" class="primary-button contact-submit-button text-sm px-6 py-3 mt-3" title="Send your message">
+                        <span class="button-text">Send Message</span>
+                        <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
+    <!-- Modal for Certificate Preview -->
+    <div id="certificate-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-button">&times;</button>
+            <img id="modal-image" src="" alt="Certificate Preview" class="max-w-full max-h-[80vh] object-contain mx-auto" />
+            <h3 id="modal-title" class="text-xl font-bold text-accent-aqua-green mt-4"></h3>
+            <p id="modal-issuer" class="text-gray-300 text-sm"></p>
+            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="primary-button text-sm px-4 py-2 mt-4" title="View Credential Online">
+                <span class="button-text">View Credential</span>
+                <span class="button-icon"><i class="fas fa-external-link-alt ml-1"></i></span>
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-dark-card-bg text-gray-400 py-8 px-6 text-center border-t border-border-dark">
+    <footer class="footer bg-dark-bg text-gray-500 text-center py-6 text-xs relative z-10">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <p class="text-sm mb-3 md:mb-0">&copy; <span id="currentYear"></span> Muhammad Jalal Khan. All rights reserved.</p>
+            <p>&copy; <span id="currentYear"></span> Muhammad Jalal Khan. All rights reserved.</p>
+            <!-- Internal Navigation Links in Footer -->
             <div class="footer-nav mt-3 md:mt-0 flex flex-wrap justify-center gap-x-4">
                 <a href="#about" class="footer-link scroll-button text-xs" data-section="about" title="Go to About section">About</a>
                 <a href="#skills" class="footer-link scroll-button text-xs" data-section="skills" title="Go to Skills section">Skills</a>
