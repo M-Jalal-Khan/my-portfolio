@@ -235,8 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     "https://res.cloudinary.com/dshznv39k/image/upload/v1751864284/HR_Analytics_Attrition_Demographics_1_gkrcno.png",
                     "https://res.cloudinary.com/dshznv39k/image/upload/v1751864287/HR_Analytics_Attrition_Demographics_2_supt8r.png"
                 ],
-                caseStudyUrl: "https://mavenanalytics.io/project/22095",
-                liveReportUrl: "https://app.powerbi.com/view?r=eyJrIjoiNGI5NjIwMWYtNjg0Yi00YmIxLTkzMzYtZWZmZDViNDAzODIxIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" // Updated link
+                // UPDATED: Power BI Live Report URL for HR Analytics Dashboard
+                liveReportUrl: "https://app.powerbi.com/view?r=eyJrIjoiMzc5MDBkYTItZjRmYS00ZWE1LTkxNDMtN2E2NDllOWJjOGU4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9",
+                caseStudyUrl: "https://mavenanalytics.io/project/22095"
             },
             {
                 type: "Power BI",
@@ -595,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
             particles: {
                 color: { value: ["#00CED1", "#66CDAA", "#ffffff"] }, // Keep multiple colors for variety
                 links: {
-                    color: { value: "#66CDAA" }, // User provided link color
+                    color: { value: "#374151" }, // User provided link color
                     distance: 150, // User provided distance
                     enable: true,
                     opacity: 0.5,
@@ -626,15 +627,65 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("scripts.js: tsParticles library not loaded. Particle background will not appear. Check CDN link.");
     }
 
+    // --- Mobile Menu Toggle Functionality ---
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    // Select all nav items within the mobile menu, including those dynamically added
+    const navLinksInMenu = document.querySelectorAll('#mobile-menu .nav-item');
+
+    if (mobileMenuToggle) {
+        console.log("scripts.js: mobileMenuToggle element found.");
+        mobileMenuToggle.addEventListener('click', () => {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('menu-open');
+                // Toggle hamburger icon to 'x' and vice versa
+                const icon = mobileMenuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('menu-open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    document.body.style.overflowY = 'hidden'; // Prevent scrolling when menu is open
+                    console.log("scripts.js: Mobile menu opened.");
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflowY = 'auto'; // Restore scrolling
+                    console.log("scripts.js: Mobile menu closed.");
+                }
+            } else {
+                console.warn("scripts.js: mobileMenu element not found for toggle.");
+            }
+        });
+    } else {
+        console.warn("scripts.js: mobileMenuToggle element not found.");
+    }
+
+    // Close mobile menu when a navigation link is clicked
+    navLinksInMenu.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
+                mobileMenu.classList.remove('menu-open');
+                if (mobileMenuToggle) {
+                    mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                    mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                }
+                document.body.style.overflowY = 'auto'; // Restore scrolling
+                console.log("scripts.js: Mobile menu closed via link click.");
+            }
+        });
+    });
+
+
     // --- Smooth Scrolling & Active Nav Link Logic ---
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.nav-item'); // Main nav items (desktop & mobile)
     const sections = document.querySelectorAll('main section[id]');
     const siteLogo = document.getElementById('site-logo');
     let isScrollingByClick = false;
 
     const setActiveNavItem = (sectionId) => {
         navItems.forEach(item => {
-            if (item.dataset.section === sectionId) {
+            // Check both data-section (for buttons) and href (for anchor links)
+            const itemSection = item.dataset.section || item.getAttribute('href')?.substring(1);
+            if (itemSection === sectionId) {
                 if (!item.classList.contains('active')) {
                     item.classList.add('active');
                 }
@@ -648,7 +699,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handleScrollLinkClick = function(event) {
         event.preventDefault();
-        const targetId = this.dataset.section;
+        const targetId = this.dataset.section || this.getAttribute('href')?.substring(1); // Get from data-section or href
         const targetSection = document.getElementById(targetId);
 
         if (targetSection) {
@@ -661,15 +712,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
 
+            // Set a timeout to reset the flag after scrolling completes
             setTimeout(() => {
                 isScrollingByClick = false;
+                // Manually trigger scroll event to update active nav item if needed after smooth scroll
                 window.dispatchEvent(new Event('scroll'));
-            }, 700);
+            }, 700); // Adjust timeout based on your smooth scroll duration
         } else {
             console.warn(`scripts.js: Section with ID '${targetId}' not found for navigation.`);
         }
     };
 
+    // Attach click listeners to all relevant navigation elements
     navItems.forEach(link => {
         link.addEventListener('click', handleScrollLinkClick);
     });
@@ -699,19 +753,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Disconnect previous observer if it exists to prevent multiple observers
         if (window.sectionObserverInstance) {
             window.sectionObserverInstance.disconnect();
         }
 
         const currentNavbarHeight = navbar.offsetHeight;
-        const rootMarginTop = `-${currentNavbarHeight + 1}px`;
-        const rootMarginBottom = `-${window.innerHeight - currentNavbarHeight - 1}px`;
+        // Calculate rootMargin dynamically based on navbar height
+        // This ensures the intersection point is just below the fixed navbar
+        const rootMarginTop = `-${currentNavbarHeight + 1}px`; // +1 to ensure it's just below
+        const rootMarginBottom = `-${window.innerHeight - currentNavbarHeight - 1}px`; // Ensures only one section is "intersecting" significantly
         const rootMarginValue = `${rootMarginTop} 0px ${rootMarginBottom} 0px`;
 
         console.log(`scripts.js: IntersectionObserver rootMargin set to: ${rootMarginValue}`);
 
         window.sectionObserverInstance = new IntersectionObserver((entries) => {
             if (isScrollingByClick) {
+                // If user clicked a link, let the click handler manage active state temporarily
                 return;
             }
 
@@ -720,13 +778,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             entries.forEach(entry => {
                 const rect = entry.boundingClientRect;
-                const navbarBottom = currentNavbarHeight;
+                const navbarBottom = currentNavbarHeight; // Bottom edge of the navbar
 
+                // Check if the section is currently visible AND below the navbar
                 if (rect.top <= navbarBottom + 5 && rect.bottom > navbarBottom) {
+                    // Calculate visible height of the section *below* the navbar
                     const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, navbarBottom);
                     const sectionHeight = rect.height;
                     const visibleRatio = sectionHeight > 0 ? visibleHeight / sectionHeight : 0;
 
+                    // Prioritize the section with the largest visible portion
                     if (visibleRatio > highestVisibleRatio) {
                         highestVisibleRatio = visibleRatio;
                         activeSectionId = entry.target.id;
@@ -734,6 +795,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Fallback: If no section has a significant visible ratio (e.g., at very top of page or between sections)
+            // find the first section whose top is at or above the navbar bottom
             if (!activeSectionId) {
                 for (let i = 0; i < sections.length; i++) {
                     const section = sections[i];
@@ -745,28 +808,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            if (!activeSectionId && window.scrollY < currentNavbarHeight + 50) {
+            // Special case for the very top of the page, ensure 'hero' is active
+            if (!activeSectionId && window.scrollY < currentNavbarHeight + 50) { // Small buffer
                 activeSectionId = 'hero';
             }
 
             setActiveNavItem(activeSectionId);
 
         }, {
-            root: null,
+            root: null, // Use the viewport as the root
             rootMargin: rootMarginValue,
+            // Use multiple thresholds to get more granular intersection data
             threshold: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
         });
 
+        // Observe all main sections
         sections.forEach(section => {
             window.sectionObserverInstance.observe(section);
         });
         console.log("scripts.js: All relevant sections observed by IntersectionObserver.");
     };
 
+    // Initial setup of the observer
     setupIntersectionObserver();
+    // Re-setup on window load to ensure correct navbar height is used
     window.addEventListener('load', () => {
         console.log("scripts.js: Window loaded event fired.");
-        window.dispatchEvent(new Event('scroll'));
+        setScrollPadding(); // Recalculate navbar height just in case
+        setupIntersectionObserver(); // Re-setup observer with final navbar height
+        window.dispatchEvent(new Event('scroll')); // Trigger scroll to set initial active nav item
     });
 
     // --- Section Title Interactivity ---
@@ -842,8 +912,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     group.items.forEach(skill => {
                         const card = document.createElement('div');
                         card.className = 'skill-card';
+                        // Conditionally render icon if it exists
+                        const iconHtml = skill.icon ? `<i class="${skill.icon} text-3xl ${skill.category.includes('programming') || skill.category.includes('ml-analytics') ? 'text-accent-aqua-green' : 'text-accent-aqua-blue'}"></i>` : '';
                         card.innerHTML = `
-                            <i class="${skill.icon} text-3xl ${skill.category.includes('programming') || skill.category.includes('ml-analytics') ? 'text-accent-aqua-green' : 'text-accent-aqua-blue'}"></i>
+                            ${iconHtml}
                             <p class="mt-2 text-white text-sm">${skill.name}</p>
                         `;
                         skillsGrid.appendChild(card);
@@ -856,8 +928,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (skill.category.includes(filterCategory)) {
                             const card = document.createElement('div');
                             card.className = 'skill-card';
+                            // Conditionally render icon if it exists
+                            const iconHtml = skill.icon ? `<i class="${skill.icon} text-3xl ${skill.category.includes('programming') || skill.category.includes('ml-analytics') ? 'text-accent-aqua-green' : 'text-accent-aqua-blue'}"></i>` : '';
                             card.innerHTML = `
-                                <i class="${skill.icon} text-3xl ${skill.category.includes('programming') || skill.category.includes('ml-analytics') ? 'text-accent-aqua-green' : 'text-accent-aqua-blue'}"></i>
+                                ${iconHtml}
                                 <p class="mt-2 text-white text-sm">${skill.name}</p>
                             `;
                             skillsGrid.appendChild(card);
@@ -956,16 +1030,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalIssuer.textContent = card.dataset.issuer;
                 modalLink.href = card.dataset.url;
                 certificateModal.classList.add('visible');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
             });
         });
 
         modalCloseButton.addEventListener('click', () => {
             certificateModal.classList.remove('visible');
+            document.body.style.overflow = ''; // Restore scrolling
         });
 
         certificateModal.addEventListener('click', (event) => {
             if (event.target === certificateModal) {
                 certificateModal.classList.remove('visible');
+                document.body.style.overflow = ''; // Restore scrolling
             }
         });
 
@@ -998,7 +1075,7 @@ document.addEventListener('DOMContentLoaded', () => {
         experienceTimeline.innerHTML = ''; // Clear existing content
         portfolioData.experience.forEach((exp, index) => {
             const item = document.createElement('div');
-            item.className = `timeline-item ${index % 2 === 0 ? 'right' : 'left'}`;
+            item.className = `timeline-item ${index % 2 === 0 ? 'right' : 'left'}`; // Corrected original logic for left/right
             const techSpans = exp.techStack.map(tech => `<span class="text-xs px-2 py-1">${tech}</span>`).join('');
             item.innerHTML = `
                 <div class="timeline-content p-4">
@@ -1346,12 +1423,24 @@ function initializeCarousels() {
             return;
         }
 
+        // Create dots if they don't exist (this part was missing in your provided file)
+        if (dotsContainer && dotsContainer.children.length === 0 && images.length > 1) {
+            images.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('carousel-dot');
+                dot.dataset.index = index;
+                dotsContainer.appendChild(dot);
+            });
+        }
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.carousel-dot') : [];
+
+
         const updateCarousel = () => {
             if (imagesContainer) {
                 imagesContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
             }
-            if (dotsContainer) {
-                dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            if (dots.length > 0) {
+                dots.forEach((dot, index) => {
                     if (index === currentIndex) {
                         dot.classList.add('active');
                     } else {
@@ -1375,9 +1464,13 @@ function initializeCarousels() {
             clearInterval(intervalId);
         };
 
+        // --- Add hover functionality ---
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+
         if (prevButton) {
             prevButton.addEventListener('click', () => {
-                stopAutoScroll();
+                stopAutoScroll(); // Stop on manual interaction
                 currentIndex = (currentIndex - 1 + images.length) % images.length;
                 updateCarousel();
                 startAutoScroll(); // Restart auto-scroll after manual interaction
@@ -1386,7 +1479,7 @@ function initializeCarousels() {
 
         if (nextButton) {
             nextButton.addEventListener('click', () => {
-                stopAutoScroll();
+                stopAutoScroll(); // Stop on manual interaction
                 currentIndex = (currentIndex + 1) % images.length;
                 updateCarousel();
                 startAutoScroll(); // Restart auto-scroll after manual interaction
@@ -1396,7 +1489,7 @@ function initializeCarousels() {
         if (dotsContainer) {
             dotsContainer.addEventListener('click', (event) => {
                 if (event.target.classList.contains('carousel-dot')) {
-                    stopAutoScroll();
+                    stopAutoScroll(); // Stop on manual interaction
                     currentIndex = parseInt(event.target.dataset.index);
                     updateCarousel();
                     startAutoScroll(); // Restart auto-scroll after manual interaction

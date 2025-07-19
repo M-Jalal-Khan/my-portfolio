@@ -35,6 +35,7 @@ body {
     min-height: 100vh;
     position: relative;
     line-height: 1.6;
+    /* Removed -webkit-text-size-adjust property */
 }
 
 h1, h2, h3, h4, h5 {
@@ -369,7 +370,7 @@ main {
 .navbar {
     background-color: var(--color-dark-card-bg);
     box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.15), 0 3px 5px -1px rgba(0, 0, 0, 0.08);
-    position: sticky;
+    position: fixed; /* Changed to fixed to ensure it stays at the top */
     top: 0;
     left: 0;
     width: 100%;
@@ -397,6 +398,7 @@ main {
     text-shadow: 0 0 8px rgba(var(--color-accent-aqua-green-rgb), 0.6);
 }
 
+/* Base styles for navigation links */
 .navbar ul {
     display: flex;
     flex-wrap: nowrap;
@@ -565,18 +567,18 @@ main {
     border-radius: 1rem; /* Slightly rounded rectangular corners */
     border: 3px solid var(--color-accent-aqua-blue); /* Changed from magenta to aqua blue */
     box-shadow: 0 0 0 3px var(--color-accent-aqua-blue),
-                0 0 10px rgba(var(--color-accent-aqua-blue-rgb), 0.2), /* Reduced inner glow intensity */
-                0 0 20px rgba(var(--color-accent-aqua-blue-rgb), 0.1); /* Reduced outer diffused glow intensity */
+                0 0 10px rgba(var(--color-accent-aqua-blue-rgb), 0.2),
+                0 0 20px rgba(var(--color-accent-aqua-blue-rgb), 0.1);
     transition: all 0.4s ease-in-out;
     /* Initial state for cursor glow */
     --glow-x: 50%;
     --glow-y: 50%;
-    background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(var(--color-accent-aqua-blue-rgb), 0.08) 0%, transparent 70%); /* Reduced background glow intensity */
+    background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(var(--color-accent-aqua-blue-rgb), 0.08) 0%, transparent 70%);
 }
 
 #profile-image-frame:hover {
-    transform: scale(1.03); /* Slightly increased scale on hover */
-    border-color: var(--color-accent-aqua-green); /* Aqua green border on hover */
+    transform: scale(1.03);
+    border-color: var(--color-accent-aqua-green);
     box-shadow: 0 0 0 3px var(--color-accent-aqua-green),
                 0 0 15px rgba(var(--color-accent-aqua-green-rgb), 0.3),
                 0 0 30px rgba(var(--color-accent-aqua-green-rgb), 0.2);
@@ -585,13 +587,13 @@ main {
 .profile-image-actual {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fills the rectangular frame without distortion */
-    object-position: center; /* Centers the image within the frame */
+    object-fit: cover;
+    object-position: center;
     border-radius: inherit;
 }
 
 .hero-pattern {
-    background-image: radial-gradient(circle at 50% 50%, rgba(var(--color-accent-aqua-blue-rgb),0.08) 0%, transparent 80%), /* Changed from magenta to aqua blue */
+    background-image: radial-gradient(circle at 50% 50%, rgba(var(--color-accent-aqua-blue-rgb),0.08) 0%, transparent 80%),
                       repeating-linear-gradient(0deg, rgba(var(--color-accent-aqua-green-rgb),0.08) 0%, rgba(var(--color-accent-aqua-green-rgb),0.08) 1px, transparent 1px, transparent 10px),
                       repeating-linear-gradient(90deg, rgba(var(--color-accent-aqua-blue-rgb),0.08) 0%, rgba(var(--color-accent-aqua-blue-rgb),0.08) 1px, transparent 1px, transparent 10px);
     background-size: 100% 100%;
@@ -602,30 +604,29 @@ main {
     100% { background-position: 100% 100%; }
 }
 
-/* Particle Background from user's provided code */
 #particle-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Ensures it's behind all content */
+  z-index: -1;
 }
 
 
 /* About Section Specific - NO IMAGE */
 #about .container {
-    flex-direction: column; /* Ensure column layout */
-    align-items: center; /* Center content */
-    text-align: center; /* Center text for full width */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-#about .md\:w-full { /* Target the text container directly */
-    width: 100%; /* Ensure it takes full width */
-    max-width: 800px; /* Optional: set a max-width for readability */
-    margin: 0 auto; /* Center the text block */
+#about .md\:w-full {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 #about .section-description {
-    text-align: left; /* Keep text aligned left within its block */
+    text-align: left;
 }
 
 
@@ -652,12 +653,12 @@ main {
 
 .section-title.hover-active {
     color: var(--color-accent-aqua-blue);
-    text-shadow: 0 0 20px rgba(var(--color-accent-aqua-blue-rgb), 1); /* Stronger glow */
-    transform: translateY(-3px) scale(1.01); /* Slightly increased transform */
+    text-shadow: 0 0 20px rgba(var(--color-accent-aqua-blue-rgb), 1);
+    transform: translateY(-3px) scale(1.01);
 }
 .section-title.hover-active::after {
     width: 58%;
-    background: linear-gradient(to right, var(--color-accent-aqua-blue), var(--color-accent-aqua-green)); /* Changed from magenta to aqua blue */
+    background: linear-gradient(to right, var(--color-accent-aqua-blue), var(--color-accent-aqua-green));
     transform: scaleX(1.05);
 }
 
@@ -677,7 +678,7 @@ main {
     border: 1px solid var(--color-border-dark);
     cursor: pointer;
     transition: all 0.3s ease;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
 }
 
 .skill-tab-button:hover {
@@ -704,11 +705,11 @@ main {
     border-radius: 0.6rem;
     border: 1px solid var(--color-border-dark);
     box-shadow: 0 6px 10px rgba(0,0,0,0.25);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.4s ease, transform 0.4s ease; /* Added opacity and transform for entry animation */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.4s ease, transform 0.4s ease;
     position: relative;
     overflow: hidden;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(20px); /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
 }
 .skill-card.is-visible {
     opacity: 1;
@@ -733,8 +734,8 @@ main {
     box-shadow: 0 0 15px rgba(var(--color-accent-aqua-blue-rgb), 0.5);
     transition: all 0.3s ease;
     /* Ensure it aligns with the grid system */
-    margin-top: 2rem; /* Add some space above the header */
-    margin-bottom: 1rem; /* Add some space below the header */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .skill-group-header:hover {
@@ -750,15 +751,15 @@ main {
     border-radius: 1rem;
     padding: 1.5rem;
     text-align: center;
-    border: 2px solid var(--color-border-dark); /* Default border */
+    border: 2px solid var(--color-border-dark);
     box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out; /* Added opacity and transform for entry animation */
+    transition: all 0.3s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: pointer; /* Indicate clickability */
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(20px); /* Initial state for animation */
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
 }
 .certification-card.is-visible {
     opacity: 1;
@@ -772,11 +773,11 @@ main {
 }
 
 /* Specific styling for Credly Achievement Badges */
-.credential-type-AchievementBadge { /* Updated class name for clarity */
-    border-color: var(--color-accent-aqua-green); /* Different border color for Credly */
+.credential-type-AchievementBadge {
+    border-color: var(--color-accent-aqua-green);
 }
-.credential-type-AchievementBadge:hover { /* Updated class name for clarity */
-    border-color: var(--color-accent-aqua-blue); /* Hover color for Credly */
+.credential-type-AchievementBadge:hover {
+    border-color: var(--color-accent-aqua-blue);
     box-shadow: 0 0 40px rgba(var(--color-accent-aqua-blue-rgb), 0.9);
 }
 .certification-icon {
@@ -800,7 +801,7 @@ main {
     margin-bottom: 0.6rem;
 }
 .credential-image-wrapper {
-    height: 160px; /* Increased height for better visibility */
+    height: 160px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -861,8 +862,8 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
-    backdrop-filter: blur(8px); /* Glassmorphism effect */
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -919,6 +920,7 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 1rem;
+    overflow: hidden; /* Clear floats */
 }
 .timeline::after {
     content: '';
@@ -932,13 +934,15 @@ main {
     border-radius: 2px;
 }
 .timeline-item {
-    padding: 6px 20px;
     position: relative;
     background-color: inherit;
-    width: 50%;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(20px); /* Initial state for animation */
+    width: 50%; /* Each item takes 50% of the timeline width */
+    opacity: 0;
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    box-sizing: border-box;
+    padding: 1rem 0; /* Add some vertical padding to the item itself */
+    clear: both; /* Ensure items don't float next to each other */
 }
 .timeline-item.is-visible {
     opacity: 1;
@@ -949,46 +953,77 @@ main {
     margin-bottom: 4rem;
 }
 
-.timeline-item::after {
+/* Left-aligned items */
+.timeline-item.left {
+    float: left;
+    padding-right: 2.5rem; /* Space for dot + gap from center line */
+    padding-left: 0.5rem; /* Padding from left screen edge */
+}
+.timeline-item.left::before { /* Dot for left item */
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    background: var(--color-dark-bg);
+    border: 3px solid var(--color-accent-aqua-blue);
+    top: 1.5rem; /* Adjusted vertical position */
+    right: -9px; /* Position dot on the right edge of the left item (which is the center line) */
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(var(--color-accent-aqua-blue-rgb), 0.8);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Right-aligned items */
+.timeline-item.right {
+    float: right;
+    padding-left: 2.5rem; /* Space for dot + gap from center line */
+    padding-right: 0.5rem; /* Padding from right screen edge */
+}
+.timeline-item.right::before { /* Dot for right item */
     content: '';
     position: absolute;
     width: 18px; height: 18px;
     background: var(--color-dark-bg);
     border: 3px solid var(--color-accent-aqua-green);
-    top: 12px;
+    top: 1.5rem; /* Adjusted vertical position */
+    left: -9px; /* Position dot on the left edge of the right item (which is the center line) */
     border-radius: 50%;
     z-index: 1;
     box-shadow: 0 0 15px rgba(var(--color-accent-aqua-green-rgb), 0.8);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* For dot glow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline-item.left::after {
-    left: calc(100% - 9px);
+/* Active dot glow */
+.timeline-item.is-visible::before {
     border-color: var(--color-accent-aqua-blue);
-    box-shadow: 0 0 15px rgba(var(--color-accent-aqua-blue-rgb), 0.8);
-}
-
-.timeline-item.right::after {
-    left: -9px;
-    border-color: var(--color-accent-aqua-green);
-    box-shadow: 0 0 15px rgba(var(--color-accent-aqua-green-rgb), 0.8);
-}
-
-.timeline-item.is-visible::after {
-    border-color: var(--color-accent-aqua-blue); /* Active glow color */
     box-shadow: 0 0 25px rgba(var(--color-accent-aqua-blue-rgb), 1);
 }
 
 
 .timeline-content {
-    padding: 1rem;
+    padding: 1rem; /* Base padding for content inside the card */
     background-color: var(--color-dark-card-bg);
     position: relative;
     border-radius: 0.8rem;
     box-shadow: 0 8px 15px rgba(0,0,0,0.3);
     border: 1px solid var(--color-border-dark);
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: 100%; /* Fill the available width within the parent's padding */
+    height: auto; /* Allow height to adjust to content */
+    margin: 0; /* Ensure no external margins interfere */
+    overflow: hidden; /* Ensure content stays within the card boundaries */
 }
+
+/* Specific text alignment for content within left/right timeline items */
+.timeline-item.left .timeline-content {
+    text-align: right;
+}
+
+.timeline-item.right .timeline-content {
+    text-align: left;
+}
+
 .timeline-content:hover {
     border-color: var(--color-accent-aqua-blue);
     transform: translateY(-3px);
@@ -996,7 +1031,13 @@ main {
 }
 .timeline-title { font-size: 1.25rem; color: var(--color-accent-aqua-green); margin-bottom: 0.3rem; }
 .timeline-duration { font-size: 0.8rem; color: var(--color-text-dark); margin-bottom: 0.6rem; }
-.timeline-description { font-size: 0.88rem; color: var(--color-text-medium); margin-bottom: 0.75rem; }
+.timeline-description {
+    font-size: 0.88rem;
+    color: var(--color-text-medium);
+    margin-bottom: 0.75rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 .timeline-tech-stack span {
     padding: 0.2rem 0.5rem;
     font-size: 0.75rem;
@@ -1027,14 +1068,14 @@ main {
     overflow: hidden;
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
     border: 2px solid var(--color-border-dark);
-    transition: all 0.4s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out; /* Added opacity and transform for entry animation */
+    transition: all 0.4s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out;
     position: relative;
     background-color: rgba(var(--color-dark-card-bg-rgb), 0.6);
     backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(30px); /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(30px);
 }
 .project-card.is-visible {
     opacity: 1;
@@ -1050,22 +1091,22 @@ main {
 .project-image-carousel {
     position: relative;
     width: 100%;
-    height: 200px; /* Increased height for better visibility */
+    height: 200px;
     overflow: hidden;
-    background-color: rgba(var(--color-dark-card-bg-rgb), 0.8); /* Semi-transparent background */
-    border-bottom: 1px solid var(--color-border-dark); /* Keep existing border */
+    background-color: rgba(var(--color-dark-card-bg-rgb), 0.8);
+    border-bottom: 1px solid var(--color-border-dark);
 
     /* --- NEW/IMPROVED CAROUSEL CONTAINER STYLING --- */
-    border: 2px solid rgba(var(--color-accent-aqua-blue-rgb), 0.5); /* More prominent, semi-transparent aqua blue border */
+    border: 2px solid rgba(var(--color-accent-aqua-blue-rgb), 0.5);
     box-shadow: 0 0 15px rgba(var(--color-accent-aqua-blue-rgb), 0.4),
-                0 0 25px rgba(var(--color-accent-aqua-green-rgb), 0.3); /* Dual color shadow for depth */
-    transition: all 0.3s ease; /* Smooth transition for container effects */
+                0 0 25px rgba(var(--color-accent-aqua-green-rgb), 0.3);
+    transition: all 0.3s ease;
 }
 
 .project-image-carousel:hover {
-    border-color: var(--color-accent-aqua-green); /* Change border color on hover */
+    border-color: var(--color-accent-aqua-green);
     box-shadow: 0 0 20px rgba(var(--color-accent-aqua-blue-rgb), 0.6),
-                0 0 35px rgba(var(--color-accent-aqua-green-rgb), 0.5); /* Stronger dual color shadow on hover */
+                0 0 35px rgba(var(--color-accent-aqua-green-rgb), 0.5);
 }
 
 /* NEW: Carousel Transition Overlay */
@@ -1080,28 +1121,28 @@ main {
         rgba(var(--color-accent-aqua-green-rgb), 0.8) 50%,
         transparent 100%
     );
-    z-index: 25; /* Higher than images, lower than arrows/dots */
-    transform: translateX(-100%); /* Start off-screen to the left */
-    transition: transform 0.4s ease-out, opacity 0.2s ease; /* Smooth slide and fade */
-    opacity: 0; /* Initially hidden */
-    pointer-events: none; /* Allow clicks to pass through when not active */
+    z-index: 25;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-out, opacity 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .carousel-transition-overlay.active {
-    transform: translateX(0%); /* Slide in */
-    opacity: 1; /* Fully visible */
+    transform: translateX(0%);
+    opacity: 1;
 }
 
 .carousel-transition-overlay.hide {
-    transform: translateX(100%); /* Slide out to the right */
-    opacity: 0; /* Fade out */
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 .project-image-carousel .carousel-images {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s ease-in-out; /* Slightly longer and smoother transition */
+    transition: transform 0.6s ease-in-out;
 }
 
 .project-image-carousel .carousel-images img {
@@ -1109,8 +1150,6 @@ main {
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
-    /* Optional: Add a subtle fade-in animation for individual images if JS is updated to manage opacity */
-    /* For now, relying on the container's transform transition */
 }
 
 .project-image-carousel .carousel-nav-dots {
@@ -1122,9 +1161,9 @@ main {
     gap: 0.4rem;
     z-index: 20;
     /* --- NEW DOTS CONTAINER STYLING --- */
-    background-color: rgba(var(--color-dark-card-bg-rgb), 0.7); /* Semi-transparent background for dots */
+    background-color: rgba(var(--color-dark-card-bg-rgb), 0.7);
     padding: 0.25rem 0.75rem;
-    border-radius: 1rem; /* Pill shape */
+    border-radius: 1rem;
     border: 1px solid rgba(var(--color-border-dark-rgb), 0.5);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -1135,21 +1174,21 @@ main {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for all dot properties */
-    border: 1px solid transparent; /* Subtle border for definition */
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .project-image-carousel .carousel-dot.active {
-    background-color: var(--color-accent-aqua-blue); /* Active dot in aqua blue */
-    transform: scale(1.3); /* Slightly larger */
-    border-color: var(--color-text-light); /* White border for active dot */
-    box-shadow: 0 0 8px rgba(var(--color-accent-aqua-blue-rgb), 0.7); /* Glow for active dot */
+    background-color: var(--color-accent-aqua-blue);
+    transform: scale(1.3);
+    border-color: var(--color-text-light);
+    box-shadow: 0 0 8px rgba(var(--color-accent-aqua-blue-rgb), 0.7);
 }
 
 .project-image-carousel .carousel-dot:hover:not(.active) {
-    background-color: var(--color-accent-aqua-green); /* Hover non-active dot in aqua green */
+    background-color: var(--color-accent-aqua-green);
     transform: scale(1.1);
-    border-color: rgba(var(--color-accent-aqua-green-rgb), 0.5); /* Subtle border on hover */
+    border-color: rgba(var(--color-accent-aqua-green-rgb), 0.5);
 }
 
 .project-image-carousel .carousel-arrow {
@@ -1157,34 +1196,34 @@ main {
     top: 50%;
     transform: translateY(-50%);
     /* --- NEW ARROW STYLING --- */
-    background: linear-gradient(to right, rgba(var(--color-accent-aqua-blue-rgb), 0.8), rgba(var(--color-accent-aqua-green-rgb), 0.8)); /* Gradient background */
-    color: var(--color-dark-bg); /* Dark text for contrast */
-    border: 1px solid var(--color-text-light); /* White border */
-    padding: 0.75rem 0.5rem; /* Adjusted padding */
+    background: linear-gradient(to right, rgba(var(--color-accent-aqua-blue-rgb), 0.8), rgba(var(--color-accent-aqua-green-rgb), 0.8));
+    color: var(--color-dark-bg);
+    border: 1px solid var(--color-text-light);
+    padding: 0.75rem 0.5rem;
     cursor: pointer;
     z-index: 20;
     font-size: 1.2rem;
     border-radius: 0.5rem;
-    transition: all 0.3s ease; /* Smooth transition for all arrow properties */
-    box-shadow: 0 2px 10px rgba(0, 206, 209, 0.5); /* Subtle shadow */
-    opacity: 0.8; /* Slightly transparent when not hovered */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 206, 209, 0.5);
+    opacity: 0.8;
 }
 
 .project-image-carousel .carousel-arrow:hover {
-    background: linear-gradient(to right, var(--color-accent-aqua-green), var(--color-accent-aqua-blue)); /* Reverse gradient on hover */
-    transform: translateY(-50%) scale(1.1); /* Pop effect on hover */
-    box-shadow: 0 0 20px rgba(var(--color-accent-aqua-green-rgb), 0.8); /* Stronger glow on hover */
-    opacity: 1; /* Fully opaque on hover */
+    background: linear-gradient(to right, var(--color-accent-aqua-green), var(--color-accent-aqua-blue));
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(var(--color-accent-aqua-green-rgb), 0.8);
+    opacity: 1;
 }
 
 .project-image-carousel .carousel-arrow.left {
     left: 0.5rem;
-    border-top-left-radius: 0; /* Flat edge towards the image */
+    border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 .project-image-carousel .carousel-arrow.right {
     right: 0.5rem;
-    border-top-right-radius: 0; /* Flat edge towards the image */
+    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
@@ -1210,7 +1249,6 @@ main {
     justify-content: center;
 }
 .project-tech-tags span {
-    display: inline-block;
     padding: 0.2rem 0.5rem;
     font-size: 0.75rem;
     border-radius: 9999px;
@@ -1284,30 +1322,30 @@ main {
 /* TESTIMONIALS SECTION (Grid Layout) Styles */
 #testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid, min 300px wide cards */
-    gap: 1.5rem; /* Space between cards */
-    justify-content: center; /* Center cards horizontally */
-    align-items: stretch; /* Make cards stretch to same height */
-    padding: 1rem; /* Padding around the grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1rem;
 }
 
 .testimonial-item {
-    background-color: rgba(var(--color-dark-card-bg-rgb), 0.6); /* Semi-transparent background for glassmorphism */
-    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
-    border-radius: 1.5rem; /* More rounded corners */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(var(--color-accent-aqua-blue-rgb), 0.3); /* Stronger shadow + subtle border glow */
-    border: 1px solid rgba(var(--color-accent-aqua-blue-rgb), 0.2); /* Subtle border for glassmorphism */
-    transition: all 0.4s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out; /* Added opacity and transform for entry animation */
+    background-color: rgba(var(--color-dark-card-bg-rgb), 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(var(--color-accent-aqua-blue-rgb), 0.3);
+    border: 1px solid rgba(var(--color-accent-aqua-blue-rgb), 0.2);
+    transition: all 0.4s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out;
     text-align: center;
-    padding: 2rem; /* Increased padding for better spacing */
-    display: flex; /* Use flexbox for centering content within the item */
+    padding: 2rem;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes attribution to bottom if content is short */
+    justify-content: space-between;
     align-items: center;
-    min-height: 280px; /* Increased minimum height for better content display */
-    color: var(--color-text-light); /* Ensure text color is visible */
-    opacity: 0; /* Initial state for animation */
-    transform: translateY(30px); /* Initial state for animation */
+    min-height: 280px;
+    color: var(--color-text-light);
+    opacity: 0;
+    transform: translateY(30px);
 }
 .testimonial-item.is-visible {
     opacity: 1;
@@ -1315,37 +1353,37 @@ main {
 }
 
 .testimonial-item:hover {
-    transform: translateY(-8px) scale(1.01); /* More pronounced hover effect */
-    border-color: rgba(var(--color-accent-aqua-green-rgb), 0.5); /* Hover border color */
-    box-shadow: 0 20px 40px rgba(var(--color-accent-aqua-green-rgb), 0.8), 0 0 0 3px rgba(var(--color-accent-aqua-green-rgb), 0.5); /* Stronger glow on hover */
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(var(--color-accent-aqua-green-rgb), 0.5);
+    box-shadow: 0 20px 40px rgba(var(--color-accent-aqua-green-rgb), 0.8), 0 0 0 3px rgba(var(--color-accent-aqua-green-rgb), 0.5);
 }
 
 .testimonial-item .text-lg {
-    font-size: 1.15rem; /* Slightly larger quote font size */
+    font-size: 1.15rem;
     line-height: 1.8;
-    margin-bottom: 1.5rem; /* More space below quote */
-    color: var(--color-text-light); /* Ensure quote text is white */
-    flex-grow: 1; /* Allows quote to take available space */
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+    flex-grow: 1;
 }
 
 .testimonial-item .font-semibold {
-    font-size: 1rem; /* Clearer attribution font size */
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Space between name and flag */
-    color: var(--color-accent-aqua-green); /* Attribution color */
-    margin-top: auto; /* Pushes attribution to bottom */
+    gap: 0.5rem;
+    color: var(--color-accent-aqua-green);
+    margin-top: auto;
 }
 
 .testimonial-item .flag-emoji {
-    font-size: 1.8rem; /* Larger flag emoji size */
-    line-height: 1; /* Ensure proper alignment */
+    font-size: 1.8rem;
+    line-height: 1;
 }
 
 /* Rating Stars */
 .testimonial-rating {
     margin-top: 0.5rem;
-    color: #FFD700; /* Gold color for stars */
+    color: #FFD700;
     font-size: 1.1rem;
 }
 .testimonial-rating .fas {
@@ -1365,7 +1403,7 @@ main {
 .testimonials-nav-dots,
 .testimonials-arrow-left,
 .testimonials-arrow-right {
-    display: none !important; /* Hide carousel elements */
+    display: none !important;
 }
 
 
@@ -1487,112 +1525,325 @@ textarea.form-input { resize: vertical; }
 
 /* Responsive Media Queries */
 @media (max-width: 767px) { /* Styles for small screens (mobile) */
+    /* General font size adjustments for mobile */
+    body {
+        font-size: 0.85rem;
+    }
+
+    /* Headings adjustments for mobile */
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    .section-title::after {
+        width: 35%;
+        margin-top: 0.3rem;
+    }
+
+    /* Hero section specific font adjustments for mobile */
+    .neon-title-hero {
+        font-size: 2.2rem;
+        letter-spacing: 0.02em;
+    }
+    .hero-intro-line {
+        font-size: 0.8rem;
+    }
+    .neon-text-sm {
+        font-size: 0.75rem;
+    }
+
+    /* Section spacing adjustments for mobile */
+    .section {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    .about-section,
+    .credentials-section,
+    .experience-section,
+    .projects-section,
+    .contact-section {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    #hero {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .section-description {
+        font-size: 0.75rem;
+    }
+    .project-title {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    .project-description {
+        font-size: 0.7rem;
+        min-height: 2.5rem;
+        margin-bottom: 0.4rem;
+    }
+    .project-tech-tags {
+        gap: 0.2rem;
+        margin-bottom: 0.8rem;
+    }
+    .project-tech-tags span {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.3rem;
+    }
+    .project-button {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.7rem;
+        min-height: 2.5rem;
+    }
+    .testimonial-item {
+        padding: 1.2rem;
+        min-height: 220px;
+        border-radius: 1rem;
+    }
+    .testimonial-item .text-lg {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+    .testimonial-item .font-semibold {
+        font-size: 0.8rem;
+        gap: 0.3rem;
+    }
+    .testimonial-rating {
+        font-size: 0.85rem;
+    }
+    .testimonial-role-icon {
+        font-size: 1rem;
+    }
+    .connect-me-block h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    .form-input {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+    .connect-link {
+        padding: 0.4rem 0.3rem;
+    }
+    .connect-link i {
+        font-size: 1rem;
+        width: 1.5rem;
+    }
+
+
     .navbar .container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
     }
 
     .navbar #site-logo {
-        margin-bottom: 0.8rem;
+        margin-bottom: 0;
         margin-right: 0;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+    }
+
+    /* Mobile Menu Toggle Button Click Effect */
+    #mobile-menu-toggle {
+        transition: all 0.2s ease-in-out;
+    }
+    #mobile-menu-toggle:active,
+    #mobile-menu-toggle:focus {
+        background-color: rgba(var(--color-accent-aqua-blue-rgb), 0.2);
+        border-radius: 0.25rem;
+        outline: 2px solid var(--color-accent-aqua-blue);
+        outline-offset: 2px;
+    }
+
+
+    /* Mobile Menu Wrapper */
+    .nav-links-wrapper {
+        position: fixed;
+        top: var(--navbar-height-dynamic);
+        left: auto;
+        right: 0;
+        width: 85vw;
+        max-width: 280px;
+        height: calc(100vh - var(--navbar-height-dynamic));
+        background-color: rgba(var(--color-dark-card-bg-rgb), 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-out;
+        z-index: 999;
+        overflow-y: auto;
+        padding-bottom: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 2px solid var(--color-accent-aqua-green);
+        box-shadow: 0 0 25px rgba(var(--color-accent-aqua-green-rgb), 0.7);
+    }
+
+    .nav-links-wrapper.menu-open {
+        display: flex !important;
+        transform: translateX(0);
+    }
+
+    /* IMPORTANT: Added this rule to ensure the UL takes full height and for debugging */
+    .nav-links-wrapper ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
     .navbar ul {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         width: 100%;
         text-align: center;
     }
     .nav-item {
-        padding: 0.3rem 0;
-        font-size: 0.8rem;
+        padding: 0.4rem 0;
+        font-size: 1rem;
         width: fit-content;
         margin: 0 auto;
+        color: var(--color-text-light);
+        border-bottom: 2px solid transparent;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out, color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    /* Animate nav items when menu is open */
+    .nav-links-wrapper.menu-open .nav-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Add staggered delay for each nav item */
+    .nav-links-wrapper.menu-open .nav-item:nth-child(1) { transition-delay: 0.05s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(2) { transition-delay: 0.10s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(3) { transition-delay: 0.15s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(4) { transition-delay: 0.20s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(5) { transition-delay: 0.25s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(6) { transition-delay: 0.30s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(7) { transition-delay: 0.35s; }
+    .nav-links-wrapper.menu-open .nav-item:nth-child(8) { transition-delay: 0.40s; }
+
+
+    .nav-item:hover {
+        background-color: rgba(var(--color-accent-aqua-blue-rgb), 0.1);
+        border-radius: 0.5rem;
+        color: var(--color-accent-aqua-blue);
+        border-color: var(--color-accent-aqua-blue);
+        text-shadow: 0 0 10px rgba(var(--color-accent-aqua-blue-rgb), 0.7);
+    }
+    .nav-item.active {
+        background-color: rgba(var(--color-accent-aqua-green-rgb), 0.15);
+        border-radius: 0.5rem;
+        color: var(--color-accent-aqua-green);
+        border-color: var(--color-accent-aqua-green);
+        box-shadow: 0 0 12px rgba(var(--color-accent-aqua-green-rgb), 0.5);
+        text-shadow: 0 0 12px rgba(var(--color-accent-aqua-green-rgb), 0.8);
     }
 
     /* Hero section adjustments for mobile */
     #hero .hero-content-wrapper {
-        flex-direction: column; /* Stack text above image on mobile */
-        flex-wrap: wrap; /* Allow wrapping for the overall container */
-        gap: 1.5rem; /* Adjust gap for mobile */
-        padding: 1.5rem;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        padding: 0.8rem;
     }
 
-    /* Ensure text stays on one line for mobile and is centered */
+    /* Ensure text wraps naturally and is centered */
     .neon-title-hero,
     .hero-intro-line,
     .neon-text-sm {
-        white-space: normal; /* Allow text to wrap on mobile */
-        text-align: center; /* Center text on mobile */
+        white-space: normal;
+        text-align: center;
     }
-
-    /* Adjusted font sizes for mobile to fit better on one line */
-    .neon-title-hero {
-        font-size: 1.5rem; /* Adjusted for mobile to fit better on one line */
-    }
-    .hero-intro-line {
-        font-size: 1rem; /* Adjusted for mobile to fit better on one line */
-    }
-    .neon-text-sm {
-        font-size: 0.8rem; /* Adjusted for mobile to fit better on one line */
-    }
-
 
     /* Image frame size for mobile */
     #profile-image-frame {
-        width: 12rem; /* Smaller fixed width for mobile image */
-        height: 9rem; /* Maintain 4:3 aspect ratio */
-        margin: 0 auto; /* Center the image on mobile if it's not taking full width */
+        width: 12rem;
+        height: 9rem;
+        margin: 0 auto;
     }
     .hero-image-wrapper {
-        flex: 0 0 auto; /* Allow image wrapper to take content width, not full width */
-        width: 100%; /* Ensure it takes full width of its container */
-        max-width: 12rem; /* Max width to keep it from being too big */
-        height: auto; /* Let height adjust to content */
-        margin: 0 auto; /* Center the image wrapper */
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 12rem;
+        height: auto;
+        margin: 0 auto;
     }
 
     /* Ensure hero-text can expand but also has a minimum width */
     .hero-text {
-        width: 100%; /* Text container takes full width on mobile */
-        flex-basis: auto; /* Let it be flexible */
-        min-width: unset; /* Remove min-width for mobile to allow more flexibility */
-        align-items: center; /* Center text content within its full width container */
-        padding-right: 0; /* Remove right padding on mobile */
+        width: 100%;
+        flex-basis: auto;
+        min-width: unset;
+        align-items: center;
+        padding-right: 0;
+    }
+
+    /* Hero buttons group for mobile */
+    .hero-buttons-group {
+        gap: 0.8rem;
+    }
+    .primary-button.hero-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        min-height: 2.8rem;
     }
 
 
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
     }
 
+    /* Mobile timeline adjustments */
     .timeline-item {
         width: 100%;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-left: 2.5rem; /* All items indent from the left for the line/dot */
+        padding-right: 0.5rem; /* Padding from right screen edge */
+        float: none; /* Remove floats on mobile */
     }
     .timeline::after {
-        left: 1.25rem;
+        left: 1.25rem; /* Move line to the left on mobile */
     }
-    .timeline-item.left::after,
-    .timeline-item.right::after {
-        left: 0.6rem;
+    .timeline-item.left::before,
+    .timeline-item.right::before {
+        left: 0.6rem; /* All dots on the left of the content */
+        right: auto; /* Ensure right is not set */
     }
-    .timeline-item.left {
-        text-align: left;
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left; /* All content left-aligned on mobile */
+        padding-left: 2.5rem;
         padding-right: 0.5rem;
     }
-    .timeline-item.right {
-        text-align: left;
-        padding-left: 0.5rem;
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+        text-align: left; /* Ensure content is left-aligned on mobile */
     }
 
 
     /* Contact section specific for mobile */
     #contact .container {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
     }
     .connect-me-block {
         margin-bottom: 0;
@@ -1600,41 +1851,60 @@ textarea.form-input { resize: vertical; }
 
     /* Adjust main padding for smaller screens if navbar is taller */
     main {
-        padding-top: 6rem;
+        padding-top: 4rem;
     }
 }
 
 @media (min-width: 768px) { /* md breakpoint and up (Desktop) */
+    /* Mobile menu elements hidden on desktop */
+    #mobile-menu-toggle {
+        display: none;
+    }
+    .nav-links-wrapper {
+        display: flex !important;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        backdrop-filter: none;
+        transform: none;
+        z-index: auto;
+        overflow-y: visible;
+        padding-bottom: 0;
+    }
+
     /* Hero section adjustments for desktop */
     #hero .hero-content-wrapper {
         display: flex;
-        flex-direction: row; /* Image to the right of text */
-        gap: 2rem; /* Desktop gap as per your instruction */
-        flex-wrap: nowrap; /* Prevent wrapping on desktop as per your instruction */
-        padding: 4rem 3rem; /* Keep desktop padding */
+        flex-direction: row;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        padding: 4rem 3rem;
     }
     /* Text and image wrapper widths for desktop */
     .hero-text {
         width: auto;
         flex-basis: auto;
-        flex-grow: 1; /* Allow it to grow */
-        flex-shrink: 1; /* Allow it to shrink */
-        min-width: 300px; /* Minimum width for text area */
-        text-align: left; /* Ensure left alignment on desktop */
-        align-items: flex-start; /* Align items to the start (left) on desktop */
-        padding-right: 2rem; /* Added padding to prevent text overlap */
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 300px;
+        text-align: left;
+        align-items: flex-start;
+        padding-right: 2rem;
     }
     .hero-image-wrapper {
-        flex: 0 0 25%; /* Fixed width for image container as per your instruction */
-        max-width: 24rem; /* Max width for the image wrapper */
+        flex: 0 0 25%;
+        max-width: 24rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    #profile-image-frame { /* Explicitly rectangular width and height for desktop */
+    #profile-image-frame {
         width: 24rem;
         height: 18rem;
-        margin: 0; /* Remove auto margin on desktop */
+        margin: 0;
     }
     .neon-title-hero {
         font-size: 3.8rem;
@@ -1652,18 +1922,35 @@ textarea.form-input { resize: vertical; }
     .about-text { width: 66.666667%; text-align: left; }
     .section-title { text-align: center; }
     .section-title::after { margin: 0.5rem auto 0; }
+    /* Re-adjust timeline for desktop */
     .timeline::after { left: 50%; }
     .timeline-item.left {
-        left: 0;
-        text-align: right;
-        padding-right: 2.5rem;
-        padding-left: 0.5rem;
+        float: left; /* Use float for left items */
+        clear: both; /* Ensure clear floats */
+        left: 0; /* Position at the left edge of the timeline */
+        padding-right: 2.5rem; /* Space for dot + gap from center line */
+        padding-left: 0.5rem; /* Padding from left screen edge */
     }
     .timeline-item.right {
-        left: 50%;
-        text-align: left;
-        padding-left: 2.5rem;
-        padding-right: 0.5rem;
+        float: right; /* Use float for right items */
+        clear: both; /* Ensure clear floats */
+        left: auto; /* Remove left: 50% as float handles positioning */
+        padding-left: 2.5rem; /* Space for dot + gap from center line */
+        padding-right: 0.5rem; /* Padding from right screen edge */
+    }
+    .timeline-item.left::before { /* Dot for left item */
+        right: -9px; /* Position dot on the right edge of the left item (which is the center line) */
+        left: auto; /* Ensure left is not set */
+    }
+    .timeline-item.right::before { /* Dot for right item */
+        left: -9px; /* Position dot on the left edge of the right item (which is the center line) */
+        right: auto; /* Ensure right is not set */
+    }
+    .timeline-item.left .timeline-content {
+        text-align: right; /* Content aligned right for left items */
+    }
+    .timeline-item.right .timeline-content {
+        text-align: left; /* Content aligned left for right items */
     }
 
     .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1680,25 +1967,25 @@ textarea.form-input { resize: vertical; }
 @media (min-width: 1024px) { /* lg breakpoint */
     .projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     #profile-image-frame {
-        width: 28rem; /* Even larger rectangular frame */
+        width: 28rem;
         height: 21rem;
     }
     .hero-image-wrapper {
-        flex-basis: 28rem; /* Adjusted fixed width for larger screens */
+        flex-basis: 28rem;
     }
     #hero .hero-content-wrapper {
-        gap: 5rem; /* Further increased gap for larger screens */
+        gap: 5rem;
     }
 }
 @media (min-width: 1280px) { /* xl breakpoint */
     #profile-image-frame {
-        width: 32rem; /* Even larger rectangular frame */
+        width: 32rem;
         height: 24rem;
     }
     .hero-image-wrapper {
-        flex-basis: 32rem; /* Adjusted fixed width for extra large screens */
+        flex-basis: 32rem;
     }
     #hero .hero-content-wrapper {
-        gap: 6rem; /* Even more increased gap for extra large screens */
+        gap: 6rem;
     }
 }

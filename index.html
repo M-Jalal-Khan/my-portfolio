@@ -9,6 +9,14 @@
     <meta name="theme-color" content="#00CED1"> <!-- Primary theme color: Aqua Blue -->
     <title>Muhammad Jalal Khan | Strategic Data & BI Consultant</title>
 
+    <!-- Open Graph Meta Tags for Link Previews (e.g., WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="Muhammad Jalal Khan | Strategic Data & BI Consultant" />
+    <meta property="og:description" content="I translate dense, disjointed data into focused intelligence that guides high-stakes decisions and drives operational excellence." />
+    <!-- Using your profile image URL for the Open Graph image -->
+    <meta property="og:image" content="https://res.cloudinary.com/dshznv39k/image/upload/v1751802427/WhatsApp_Image_2025-03-31_at_00.03.09_c5aef038_xwhxln.jpg" />
+    <meta property="og:url" content="https://yourportfolio.com" /> <!-- Replace with your actual deployed URL -->
+    <meta property="og:type" content="website" />
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -21,8 +29,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Favicon - Data Science / Advanced Analytics Symbol -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300CED1' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm4 0h2v4h-2zm-8 0h2v8h-2z'/%3E%3C/svg%3E">
+    <!-- Favicon - New Advanced Logo (SVG: Stylized 'MJ' Monogram with a Spark - IMPROVED) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='gradient-aqua' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300CED1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2366CDAA;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3C!-- M - clearer geometric shape --%3E%3Cpath fill='url(%23gradient-aqua)' d='M4 20V4h2l3 8 3-8h2v16h-2v-9l-2 5-2-5v9H4z'/%3E%3C!-- J - clearer geometric shape --%3E%3Cpath fill='url(%23gradient-aqua)' d='M18 20V8h-2v10c0 1.1-.9 2-2 2h-4v-2h4c.55 0 1-.45 1-1z'/%3E%3C!-- Spark - simple star, positioned to the right of J --%3E%3Cpolygon points='20,4 21.5,6 24,6.5 21.5,7 20,9 18.5,7 16,6.5 18.5,6' fill='%23FFD700' stroke='%23FFF' stroke-width='0.2'/%3E%3C/svg%3E">
 
 </head>
 <body class="bg-dark-bg text-white">
@@ -32,20 +40,29 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar fixed top-0 left-0 w-full z-50 bg-dark-card-bg bg-opacity-80 backdrop-blur-md shadow-lg rounded-b-xl">
-        <div class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
-            <div id="site-logo" class="text-xl font-bold text-accent-aqua-green cursor-pointer mb-4 md:mb-0 hover:text-accent-aqua-blue transition-colors duration-300" title="Back to Home">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            <div id="site-logo" class="text-xl font-bold text-accent-aqua-green cursor-pointer hover:text-accent-aqua-blue transition-colors duration-300" title="Back to Home">
                 Muhammad Jalal Khan
             </div>
-            <ul class="flex flex-wrap justify-center space-x-2 sm:space-x-4">
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="hero" title="Go to Home section">Home</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="about" title="Go to About section">About</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="skills" title="Go to Skills section">Skills</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="credentials" title="Go to Credentials section">Credentials</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="experience" title="Go to Experience section">Experience</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="projects" title="Go to Projects section">Projects</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="testimonials" title="Go to Testimonials section">Testimonials</button></li>
-                <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="contact" title="Go to Contact section">Contact</button></li>
-            </ul>
+
+            <!-- Hamburger Menu Button (Mobile Only) -->
+            <button id="mobile-menu-toggle" class="md:hidden text-accent-aqua-blue text-2xl focus:outline-none z-50" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links (Desktop & Mobile Toggled) -->
+            <div id="mobile-menu" class="nav-links-wrapper hidden md:flex md:relative md:w-auto md:bg-transparent md:shadow-none md:rounded-none">
+                <ul class="flex flex-col md:flex-row items-center md:space-x-4 space-y-3 md:space-y-0 w-full">
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="hero" title="Go to Home section">Home</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="about" title="Go to About section">About</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="skills" title="Go to Skills section">Skills</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="credentials" title="Go to Credentials section">Credentials</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="experience" title="Go to Experience section">Experience</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="projects" title="Go to Projects section">Projects</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="testimonials" title="Go to Testimonials section">Testimonials</button></li>
+                    <li><button class="nav-item text-sm font-medium transition-all duration-300 rounded-md px-2 py-1" data-section="contact" title="Go to Contact section">Contact</button></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -69,10 +86,10 @@
                         I translate dense, disjointed data into focused intelligence that guides high-stakes decisions and drives operational excellence.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-6 hero-buttons-group">
-                        <!-- Download CV Button -->
-                        <a href="https://www.dropbox.com/scl/fi/a6uy4fqimq6ivwyrbqk5d/MUHAMMAD-JALAL-KHAN.pdf?rlkey=b7ohjghozbz9zvgvdulm2x4bh&raw=1" download class="primary-button text-sm sm:text-base px-6 py-3 hero-button" title="Download my CV">
-                            <span class="button-text">Download My CV</span>
-                            <span class="button-icon"><i class="fas fa-download"></i></span>
+                        <!-- View/Download CV Button - Updated to use Google Drive standard share link for viewer -->
+                        <a href="https://drive.google.com/file/d/1TYeNupEvbf-mHJmSWyu1Q-26hpZtM9tp/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="primary-button text-sm sm:text-base px-6 py-3 hero-button" title="View or Download my CV">
+                            <span class="button-text">View My CV</span>
+                            <span class="button-icon"><i class="fas fa-file-pdf"></i></span>
                         </a>
                         <!-- Connect Now Button -->
                         <a href="https://wa.me/message/NB46I4RLUZBAC1" target="_blank" rel="noopener noreferrer" class="primary-button text-sm sm:text-base px-6 py-3 hero-button" title="Connect with me on WhatsApp">
@@ -153,7 +170,76 @@
         <section id="experience" class="section bg-dark-bg min-h-section-viewport">
             <h2 class="section-title text-accent-aqua-blue text-3xl">My Professional Journey</h2>
             <div class="container timeline">
-                <!-- Experience will be dynamically loaded here by JavaScript -->
+                <!-- Experience Item: Freelance Data Analyst - Upwork -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Freelance Data Analyst - Upwork</h3>
+                        <p class="timeline-duration">Jan 2022 - Present</p>
+                        <p class="timeline-description">
+                            I've had the opportunity to work with clients across the globe—USA, UK, Germany, and the UAE—**completing over 36 projects** and delivering tailored analytics solutions that align with real business needs. My work ranges from creating interactive dashboards in Power BI to conducting predictive modeling in Python. What sets me apart is my commitment to understanding the business behind the data. I don't just build models—I help my clients make confident, insight-backed decisions. Long-term client relationships and repeat contracts reflect the trust I've earned through clear communication, timely delivery, and consistent value.
+                        </p>
+                        <div class="timeline-tech-stack flex flex-wrap gap-2 mt-4">
+                            <span>Power BI</span>
+                            <span>Python</span>
+                            <span>Predictive Modeling</span>
+                            <span>SQL</span>
+                            <span>Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item: BI Transformation Lead - Healthcare -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">BI Transformation Lead - Healthcare</h3>
+                        <p class="timeline-duration">Mar 2021 - Dec 2021</p>
+                        <p class="timeline-description">
+                            Led a critical BI transformation initiative for a healthcare provider, migrating legacy reporting systems to a modern, centralized data platform. Designed and implemented robust ETL processes, built interactive dashboards, and trained clinical teams on self-service analytics. This resulted in a 30% reduction in reporting time and improved data accuracy, directly impacting patient care and operational efficiency.
+                        </p>
+                        <div class="timeline-tech-stack flex flex-wrap gap-2 mt-4">
+                            <span>SQL Server</span>
+                            <span>Power BI</span>
+                            <span>ETL</span>
+                            <span>Data Warehousing</span>
+                            <span>Healthcare Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item: Data Analyst - Retail -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Data Analyst - Retail</h3>
+                        <p class="timeline-duration">Aug 2019 - Feb 2021</p>
+                        <p class="timeline-description">
+                            Analyzed sales, inventory, and customer data for a leading retail chain to identify trends, optimize product placements, and enhance marketing strategies. Developed daily and weekly sales performance reports, contributing to a 15% increase in targeted campaign effectiveness and a 10% improvement in inventory turnover. Utilized advanced Excel, SQL, and initial Power BI dashboards.
+                        </p>
+                        <div class="timeline-tech-stack flex flex-wrap gap-2 mt-4">
+                            <span>Excel</span>
+                            <span>SQL</span>
+                            <span>Power BI</span>
+                            <span>Retail Analytics</span>
+                            <span>Market Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item: Junior Data Associate - Financial Services -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Junior Data Associate - Financial Services</h3>
+                        <p class="timeline-duration">Jan 2019 - Jul 2019</p>
+                        <p class="timeline-description">
+                            Supported senior analysts in data collection, cleaning, and preliminary analysis for financial market research. Assisted in preparing data-driven presentations and reports for clients. Gained foundational experience in large dataset handling and data integrity practices within a fast-paced financial environment.
+                        </p>
+                        <div class="timeline-tech-stack flex flex-wrap gap-2 mt-4">
+                            <span>Excel</span>
+                            <span>Data Cleaning</span>
+                            <span>Financial Data</span>
+                            <span>Reporting</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -197,12 +283,13 @@
                         <input type="email" id="contactEmail" name="contactEmail" placeholder="Your Email" class="form-input text-sm" required title="Enter your email address" />
                     </div>
                     <div class="form-group mb-4">
-                        <textarea id="contactMessage" name="contactMessage" placeholder="Your Message" rows="4" class="form-input resize-y text-sm" title="Enter your message"></textarea>
+                        <textarea id="contactMessage" name="contactMessage" rows="4" placeholder="Your Message" class="form-input resize-y text-sm" title="Enter your message"></textarea>
                     </div>
                     <button type="submit" class="primary-button contact-submit-button text-sm px-6 py-3 mt-3" title="Send your message">
                         <span class="button-text">Send Message</span>
                         <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
                     </button>
+                    <div id="form-status" class="mt-4 text-center text-sm font-medium"></div>
                 </form>
             </div>
         </section>
