@@ -142,17 +142,142 @@
 
         <!-- SKILLS SECTION -->
         <section id="skills" class="section bg-dark-bg min-h-section-viewport">
-            <h2 class="section-title text-accent-aqua-blue text-3xl">Core Skills & Tools</h2>
+            <h2 class="section-title text-accent-aqua-blue text-3xl">Tools & Expertise</h2>
+            <!-- REMOVED: The problematic "My Tools" sub-heading as requested -->
             <div class="container mx-auto max-w-6xl">
-                <div class="skills-tabs flex justify-center mb-8 flex-wrap gap-3">
-                    <button class="skill-tab-button active" data-category="all">All</button>
-                    <button class="skill-tab-button" data-category="data-tools">Data Tools</button>
-                    <button class="skill-tab-button" data-category="programming">Programming</button>
-                    <button class="skill-tab-button" data-category="ml-analytics">ML & Analytics</button>
-                    <button class="skill-tab-button" data-category="data-infra">Data Infra</button>
-                </div>
-                <div class="skills-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5" id="skills-grid">
-                    <!-- Skills will be dynamically loaded here by JavaScript -->
+                <div class="skills-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Python Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python Logo" class="tool-icon" />
+                            <h4 class="tool-name">Python</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Libraries for Data Analysis & ML</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Pandas</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> NumPy</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Matplotlib</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Seaborn</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Plotly</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Scikit-learn</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Statsmodels</li>
+                            </ul>
+                            <h5 class="sub-skill-group-heading">Web Scraping & NLP</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Beautiful Soup</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> SciPy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Power BI Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI Logo" class="tool-icon" />
+                            <h4 class="tool-name">Power BI</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Key Capabilities</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Power Query</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Data Modeling</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Data Visualization</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Connecting to Multiple Data Sources</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Creating Interactive, Auto-updating Dashboards</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Advanced DAX Functions</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Row-Level Security</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- SQL Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Logo" class="tool-icon" />
+                            <h4 class="tool-name">SQL Skills</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Expertise</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Joins, CTEs, Window Functions</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Data Cleaning & Transformation Queries</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Stored Procedures & Views</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Performance Optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Excel Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <!-- FIXED: Updated Excel logo source to a more reliable CDN for Simple Icons -->
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftexcel.svg" alt="Excel Logo" class="tool-icon" />
+                            <h4 class="tool-name">Excel & Automation</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Capabilities</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Pivot Tables & Dynamic Dashboards</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Power Query in Excel</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Macros & VBA Automation</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Advanced Formulas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tableau Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau Logo" class="tool-icon" />
+                            <h4 class="tool-name">Tableau</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Key Areas</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Interactive Dashboard Design</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Data Storytelling</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Tableau Prep (Data Preparation)</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Advanced Calculations & LODs</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Tableau Server/Cloud Management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- GA4 & Web Analytics Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <img src="https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg" alt="GA4 Logo" class="tool-icon" />
+                            <h4 class="tool-name">GA4 & Web Analytics</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Key Areas</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Google Analytics 4</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Google Tag Manager</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Funnel Analysis & UTM Tracking</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Event-based Tracking Setup</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Cloud Platforms & Databases Card -->
+                    <div class="skill-card">
+                        <div class="skill-card-header">
+                            <i class="fas fa-cloud tool-icon-fa"></i> <!-- Using Font Awesome for general cloud icon -->
+                            <h4 class="tool-name">Cloud Platforms & Databases</h4>
+                        </div>
+                        <div class="skill-card-content">
+                            <h5 class="sub-skill-group-heading">Platforms & Services</h5>
+                            <ul>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Google BigQuery</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> Azure</li>
+                                <li class="sub-skill-item"><i class="fas fa-check-circle sub-skill-icon"></i> AWS S3 / RDS</li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

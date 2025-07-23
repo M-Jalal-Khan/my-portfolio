@@ -1,7 +1,7 @@
-console.log("scripts.js: Script started execution.");
+("scripts.js: Script started execution.");
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("scripts.js: DOMContentLoaded event fired.");
+    ("scripts.js: DOMContentLoaded event fired.");
 
     // Helper function to get flag emoji by country name
     const getFlagEmoji = (country) => {
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentYearElement = document.getElementById('currentYear');
     if (currentYearElement) {
         currentYearElement.textContent = new Date().getFullYear();
-        console.log("scripts.js: Current year set in footer.");
+        ("scripts.js: Current year set in footer.");
     } else {
         console.warn("scripts.js: Element with ID 'currentYear' not found.");
     }
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navbarHeight = navbar.offsetHeight;
             document.documentElement.style.setProperty('--navbar-height-dynamic', `${navbarHeight}px`);
             document.documentElement.style.scrollPaddingTop = `${navbarHeight + 5}px`;
-            console.log(`scripts.js: Navbar height: ${navbarHeight}px, scroll-padding-top set to ${navbarHeight + 5}px.`);
+            (`scripts.js: Navbar height: ${navbarHeight}px, scroll-padding-top set to ${navbarHeight + 5}px.`);
         } else {
             console.warn("scripts.js: Navbar element not found for scroll padding calculation.");
         }
@@ -572,11 +572,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     });
     setScrollPadding();
-    console.log("scripts.js: Initial scroll padding set and debounced resize listener added.");
+    ("scripts.js: Initial scroll padding set and debounced resize listener added.");
 
 
     // --- TSParticles Background Animation Initialization ---
-    console.log("scripts.js: Checking for tsParticles library...");
+    ("scripts.js: Checking for tsParticles library...");
     if (typeof tsParticles !== 'undefined') {
         tsParticles.load("particle-bg", { // Changed ID to match user's provided HTML
             background: { color: "#0a0a0a" },
@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             detectRetina: true
         }).then(() => {
-            console.log("scripts.js: tsParticles initialized successfully!");
+            ("scripts.js: tsParticles initialized successfully!");
         }).catch((error) => {
             console.error("scripts.js: Error initializing tsParticles:", error);
         });
@@ -676,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.footer-link').forEach(link => {
         link.addEventListener('click', handleScrollLinkClick);
     });
-    console.log("scripts.js: Click listeners attached to navigation items and footer links.");
+    ("scripts.js: Click listeners attached to navigation items and footer links.");
 
     if (siteLogo) {
         siteLogo.addEventListener('click', function() {
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rootMarginBottom = `-${window.innerHeight - currentNavbarHeight - 1}px`;
         const rootMarginValue = `${rootMarginTop} 0px ${rootMarginBottom} 0px`;
 
-        console.log(`scripts.js: IntersectionObserver rootMargin set to: ${rootMarginValue}`);
+        (`scripts.js: IntersectionObserver rootMargin set to: ${rootMarginValue}`);
 
         window.sectionObserverInstance = new IntersectionObserver((entries) => {
             if (isScrollingByClick) {
@@ -760,12 +760,12 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             window.sectionObserverInstance.observe(section);
         });
-        console.log("scripts.js: All relevant sections observed by IntersectionObserver.");
+        ("scripts.js: All relevant sections observed by IntersectionObserver.");
     };
 
     setupIntersectionObserver();
     window.addEventListener('load', () => {
-        console.log("scripts.js: Window loaded event fired.");
+        ("scripts.js: Window loaded event fired.");
         window.dispatchEvent(new Event('scroll'));
     });
 
@@ -779,7 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title.classList.remove('hover-active');
         });
     });
-    console.log("scripts.js: Section title hover effects initialized.");
+    ("scripts.js: Section title hover effects initialized.");
 
     // --- Form Input Focus Effect ---
     const formInputs = document.querySelectorAll('.form-input');
@@ -791,7 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove focus effects if needed
         });
     });
-    console.log("scripts.js: Form input focus effects initialized.");
+    ("scripts.js: Form input focus effects initialized.");
 
     // --- About Section Paragraph Animations (Intersection Observer) ---
     const animatedParagraphs = document.querySelectorAll('.animated-paragraph');
@@ -811,13 +811,13 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedParagraphs.forEach(p => {
         aboutObserver.observe(p);
     });
-    console.log("scripts.js: About section paragraph animations initialized.");
+    ("scripts.js: About section paragraph animations initialized.");
 
     // --- Hero Section Title: Ensure original text is visible with heartbeat effect ---
     // The typewriter effect code has been removed.
     // The text "Strategic Data & Business Intelligence Consultant" is already in the HTML.
     // The 'neon-text-sm' class on this element in style.css provides the heartbeat animation.
-    console.log("scripts.js: Typewriter effect removed. Original title with heartbeat effect should now be visible.");
+    ("scripts.js: Typewriter effect removed. Original title with heartbeat effect should now be visible.");
 
 
     // --- Dynamic Content Rendering ---
@@ -871,7 +871,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCards.forEach((card) => {
                 skillCardObserver.observe(card);
             });
-            console.log(`scripts.js: Skills rendered for category: ${filterCategory}.`);
+            (`scripts.js: Skills rendered for category: ${filterCategory}.`);
         } else {
             console.warn("scripts.js: Skills grid element not found.");
         }
@@ -901,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderSkills(); // Initial render of all skills
-    console.log("scripts.js: Skills section initialized with tabs and animations.");
+    ("scripts.js: Skills section initialized with tabs and animations.");
 
 
     // Render Credentials
@@ -942,7 +942,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             credentialsGrid.appendChild(card);
         });
-        console.log("scripts.js: Credentials rendered.");
+        ("scripts.js: Credentials rendered.");
 
         // Add event listeners for modal
         document.querySelectorAll('.certification-card').forEach(card => {
@@ -986,7 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.certification-card').forEach(card => {
             credentialCardObserver.observe(card);
         });
-        console.log("scripts.js: Certificate modal and animations initialized.");
+        ("scripts.js: Certificate modal and animations initialized.");
 
     } else {
         console.warn("scripts.js: Credentials grid element not found.");
@@ -1012,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             experienceTimeline.appendChild(item);
         });
-        console.log("scripts.js: Experience rendered.");
+        ("scripts.js: Experience rendered.");
 
         // Intersection Observer for Timeline Items
         const timelineObserver = new IntersectionObserver((entries, observer) => {
@@ -1031,7 +1031,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.timeline-item').forEach(item => {
             timelineObserver.observe(item);
         });
-        console.log("scripts.js: Experience timeline animations initialized.");
+        ("scripts.js: Experience timeline animations initialized.");
     } else {
         console.warn("scripts.js: Experience timeline element not found.");
     }
@@ -1127,7 +1127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             projectsGrid.appendChild(card);
         });
-        console.log("scripts.js: Projects rendered.");
+        ("scripts.js: Projects rendered.");
 
         initializeCarousels(); // Initialize project image carousels
         
@@ -1148,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.project-card').forEach(card => {
             projectCardObserver.observe(card);
         });
-        console.log("scripts.js: Project card animations initialized.");
+        ("scripts.js: Project card animations initialized.");
 
     } else {
         console.warn("scripts.js: Projects grid element not found.");
@@ -1179,7 +1179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             testimonialsGrid.appendChild(item);
         });
-        console.log("scripts.js: Testimonials rendered as grid.");
+        ("scripts.js: Testimonials rendered as grid.");
 
         // Intersection Observer for Testimonial Cards
         const testimonialObserver = new IntersectionObserver((entries, observer) => {
@@ -1198,7 +1198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.testimonial-item').forEach(item => {
             testimonialObserver.observe(item);
         });
-        console.log("scripts.js: Testimonial card animations initialized.");
+        ("scripts.js: Testimonial card animations initialized.");
 
     } else {
         console.warn("scripts.js: Testimonials grid element not found.");
@@ -1232,7 +1232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             linkElement.innerHTML = `<i class="${link.icon} mr-2 ${link.name === 'Email' || link.name === 'Maven Analytics' || link.name === 'Coursera' || link.name === 'Credly' ? 'text-accent-aqua-blue' : 'text-accent-aqua-green'}"></i> ${link.name}`;
             connectLinksGrid.appendChild(linkElement);
         });
-        console.log("scripts.js: Contact links rendered.");
+        ("scripts.js: Contact links rendered.");
     } else {
         console.warn("scripts.js: Connect links grid element not found.");
     }
@@ -1272,7 +1272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         formStatus.className = "mt-4 text-center text-sm font-medium text-accent-aqua-green";
                     }
                     contactForm.reset();
-                    console.log("scripts.js: Contact form submitted successfully.");
+                    ("scripts.js: Contact form submitted successfully.");
                 } else {
                     const data = await response.json();
                     if (formStatus) {
@@ -1306,7 +1306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 500); // Keep "Sending..." for 0.5 seconds
             }
         });
-        console.log("scripts.js: Contact form event listener attached.");
+        ("scripts.js: Contact form event listener attached.");
     } else {
         console.warn("scripts.js: Contact form element not found.");
     }
