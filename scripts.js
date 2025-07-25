@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "WhatsApp", icon: "fab fa-whatsapp", url: "https://wa.me/message/NB46I4RLUZBAC1" },
             { name: "LinkedIn", icon: "fab fa-linkedin-in", url: "https://www.linkedin.com/in/mjalalkhan/" },
             { name: "GitHub", icon: "fab fa-github", url: "https://github.com/M-Jalal-Khan" },
-            { name: "Kaggle", icon: "fab fa-kaggle", url: "https://www.kaggle.com/muhammadjalalkhanktk" },
+            { name: "Kaggle", icon: "fab fa-kaggle", url: "https://www.kaggle.com/muhammadjalalktk" },
             { name: "HackerRank", icon: "fab fa-hackerrank", url: "https://www.hackerrank.com/profile/m_jalalkhanktk" },
             { name: "Maven Analytics", icon: "fas fa-chart-area", url: "https://mavenanalytics.io/profile/98217380-00f1-70b8-bb79-ce8c2b065fcf" },
             { name: "Coursera", icon: "fas fa-graduation-cap", url: "https://www.coursera.org/account-profile" },
@@ -962,6 +962,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const modalIssuer = document.getElementById('modal-issuer');
     const modalLink = document.getElementById('modal-link');
+    const modalContent = document.querySelector('.modal-content'); // Get the modal content element
+
+    // Variable to store scroll position before modal opens
+    let scrollPosition = 0;
+
+    const openModal = (imageSrc, title, issuer, url) => {
+        console.log("Attempting to open modal...");
+        scrollPosition = window.scrollY; // Store current scroll position
+
+        modalImage.src = imageSrc;
+        modalTitle.textContent = title;
+        modalIssuer.textContent = issuer;
+        modalLink.href = url;
+        
+        certificateModal.classList.add('visible');
+        certificateModal.classList.remove('hidden'); // Ensure it's not hidden by utility class
+
+        // --- Robust scroll lock ---
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden'; // Also target html
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%'; // Ensure width is maintained
+
+        console.log(`Modal opened. Stored scroll: ${scrollPosition}`);
+        console.log(`body.style.overflow: ${document.body.style.overflow}, body.style.position: ${document.body.style.position}, body.style.top: ${document.body.style.top}`);
+        console.log(`documentElement.style.overflow: ${document.documentElement.style.overflow}`);
+    };
+
+    const closeModal = () => {
+        console.log("Attempting to close modal...");
+        try {
+            certificateModal.classList.remove('visible');
+            certificateModal.classList.add('hidden'); // Add hidden utility class back
+
+            // --- Robust scroll unlock ---
+            document.body.style.overflow = ''; // Reset to default
+            document.documentElement.style.overflow = ''; // Reset to default
+            document.body.style.position = ''; // Reset position
+            document.body.style.top = ''; // Reset top
+            document.body.style.width = ''; // Reset width
+            
+            window.scrollTo(0, scrollPosition); // Restore scroll position
+            console.log(`Modal closed. Restored scroll to: ${scrollPosition}`);
+        } catch (error) {
+            console.error("Error during closeModal:", error);
+        } finally {
+            console.log(`Final body.style.overflow: ${document.body.style.overflow}, body.style.position: ${document.body.style.position}, body.style.top: ${document.body.style.top}`);
+            console.log(`Final documentElement.style.overflow: ${document.documentElement.style.overflow}`);
+        }
+    };
 
     if (credentialsGrid) {
         credentialsGrid.innerHTML = ''; // Clear existing content
@@ -1000,24 +1051,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (event.target.closest('.view-credential-btn')) {
                     return; // Let the anchor tag's default action handle it
                 }
-                modalImage.src = card.dataset.imageUrl;
-                modalTitle.textContent = card.dataset.title;
-                modalIssuer.textContent = card.dataset.issuer;
-                modalLink.href = card.dataset.url;
-                certificateModal.classList.add('visible');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+                // *** CRITICAL FIX: Call openModal function instead of manually setting styles ***
+                openModal(card.dataset.imageUrl, card.dataset.title, card.dataset.issuer, card.dataset.url);
             });
         });
 
-        modalCloseButton.addEventListener('click', () => {
-            certificateModal.classList.remove('visible');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
+        // Close button listener
+        if (modalCloseButton) {
+            modalCloseButton.addEventListener('click', closeModal);
+        } else {
+            console.warn("scripts.js: Modal close button not found.");
+        }
 
-        certificateModal.addEventListener('click', (event) => {
-            if (event.target === certificateModal) {
-                certificateModal.classList.remove('visible');
-                document.body.style.overflow = ''; // Restore scrolling
+        // Click outside modal content to close
+        if (certificateModal) {
+            certificateModal.addEventListener('click', (event) => {
+                // Check if the click was directly on the overlay, not on the modal content itself
+                if (event.target === certificateModal) {
+                    closeModal();
+                }
+            });
+        } else {
+            console.warn("scripts.js: Certificate modal element not found.");
+        }
+
+        // Prevent clicks inside modal content from bubbling to overlay
+        if (modalContent) {
+            modalContent.addEventListener('click', (event) => {
+                event.stopPropagation(); // Stop click event from reaching the overlay
+            });
+        } else {
+            console.warn("scripts.js: Modal content element not found.");
+        }
+
+
+        // --- NEW: Add Escape key listener to close modal ---
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'Escape' && certificateModal.classList.contains('visible')) {
+                closeModal();
             }
         });
 
